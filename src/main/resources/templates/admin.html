@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<form th:action="@{/logout}" method="post" style="margin-bottom: 20px;">
+    <button type="submit">Logout</button>
+</form>
+<h2>All Users</h2>
+<br>
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Job</th>
+        <th>Salary</th>
+    </tr>
+    <tr th:each="user : ${allUsers}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.surname}"></td>
+        <td th:text="${user.job}"></td>
+        <td th:text="${user.salary}"></td>
+
+
+
+        <td>
+            <button
+                    th:onClick="'window.location.href=\'/updateInfo?userId=' + ${user.id} + '\''">
+                Update
+            </button>
+            <button
+                    th:onClick="'window.location.href=\'/deleteUser?userId=' + ${user.id} + '\''">
+                Delete
+            </button>
+
+        </td>
+    </tr>
+
+</table>
+<br>
+<button
+        th:onClick="'window.location.href=\'/addNewUser\''">
+    Add
+</button>
+
+
+</body>
+
+</html>

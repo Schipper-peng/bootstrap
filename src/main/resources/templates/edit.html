@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<form th:action="@{/logout}" method="post" style="margin-bottom: 20px;">
+    <button type="submit">Logout</button>
+</form>
+<h2>User info</h2>
+<br>
+<form th:action="@{/saveUser}" th:object="${user}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    Name
+    <input th:field="*{name}"/>
+    <br><br>
+    Surname
+    <input th:field="*{surname}"/>
+    <br><br>
+    Job
+    <input th:field="*{job}"/>
+    <br><br>
+    Salary
+    <input th:field="*{salary}"/>
+    <br><br>
+    <input type="submit" value="OK">
+</form>
+
+
+</body>
+
+</html>
