@@ -8,6 +8,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -22,11 +23,11 @@ public class User implements UserDetails {
     @Column(name = "surname")
     private String surname;
 
-    @Column(name = "job")
-    private String job;
+    @Column(name = "email")
+    private String email;
 
-    @Column(name = "salary")
-    private int salary;
+    @Column(name = "age")
+    private int age;
 
     @Column(name = "password")
     private String password;
@@ -37,24 +38,26 @@ public class User implements UserDetails {
             joinColumns = @JoinColumn(name="user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
-    private List<Role> roles;
+    private Set<Role> roles;
 
     public User() {
     }
 
-    public User(String name, String surname, String job, int salary, List<Role> roles) {
+    public User(Integer id, String name, String surname, String email, int age, String password, Set<Role> roles) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
-        this.job = job;
-        this.salary = salary;
+        this.email = email;
+        this.age = age;
+        this.password = password;
         this.roles = roles;
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -74,32 +77,32 @@ public class User implements UserDetails {
         this.surname = surname;
     }
 
-    public String getJob() {
-        return job;
+    public String getEmail() {
+        return email;
     }
 
-    public void setJob(String job) {
-        this.job = job;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getSalary() {
-        return salary;
+    public int getAge() {
+        return age;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     @Override
