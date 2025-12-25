@@ -2,6 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Admin panel</title>
@@ -171,7 +173,6 @@
                                 <div class="mb-4 text-center">
                                     <label class="form-label fw-semibold text-center d-block">Role</label>
 
-                                    <!-- важно: multiple + size=2 чтобы выглядело как на скрине -->
                                     <select class="form-select mx-auto w-25"
                                             multiple
                                             size="2"

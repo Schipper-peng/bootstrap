@@ -85,7 +85,6 @@
                                 <td th:text="${user.age}"></td>
                                 <td th:text="${user.email}"></td>
 
-                                <!-- Роли строкой -->
                                 <td>
                                         <span th:each="r, st : ${user.roles}">
                                                   <span th:text="${#strings.replace(r.authority, 'ROLE_', '')}">USER</span>
